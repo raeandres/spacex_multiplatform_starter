@@ -66,3 +66,10 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
+
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.raeanandres.kmm.shared.cache"
+    }
+}
