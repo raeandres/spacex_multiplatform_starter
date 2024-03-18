@@ -53,6 +53,8 @@ kotlin {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
         }
     }
+
+    task("testClasses")
 }
 
 android {

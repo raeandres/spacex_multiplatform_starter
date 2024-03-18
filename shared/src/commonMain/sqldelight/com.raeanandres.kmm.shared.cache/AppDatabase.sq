@@ -1,10 +1,10 @@
-import sqldelight.com.intellij.openapi.components.JsonSchemaType.BOOLEAN;
+import kotlin.Boolean;
 
 CREATE TABLE Launch (
     flightNumber INTEGER NOT NULL,
     missionName TEXT NOT NULL,
     details TEXT,
-    launchSuccess INTEGER AS BOOLEAN DEFAULT NULL,
+    launchSuccess INTEGER AS Boolean DEFAULT NULL,
     launchDateUTC TEXT NOT NULL,
     patchUrlSmall TEXT,
     patchUrlLarge TEXT,
@@ -13,8 +13,8 @@ CREATE TABLE Launch (
 
 
 insertLaunch:
-INSERT INTO Launch(flightNumber,missionName,details,launchDateUTC,patchUrlSmall,patchUrlLarge,articleText)
-VALUES(?,?,?,?,?,?,?);
+INSERT INTO Launch(flightNumber,missionName,details,launchSuccess,launchDateUTC,patchUrlSmall,patchUrlLarge,articleText)
+VALUES(?,?,?,?,?,?,?,?);
 
 
 removeAllLaunches:
