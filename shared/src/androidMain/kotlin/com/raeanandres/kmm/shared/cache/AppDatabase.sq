@@ -1,0 +1,24 @@
+import sqldelight.com.intellij.openapi.components.JsonSchemaType.BOOLEAN;
+
+CREATE TABLE Launch (
+    flightNumber INTEGER NOT NULL,
+    missionName TEXT NOT NULL,
+    details TEXT,
+    launchSuccess INTEGER AS BOOLEAN DEFAULT NULL,
+    launchDateUTC TEXT NOT NULL,
+    patchUrlSmall TEXT,
+    patchUrlLarge TEXT,
+    articleText TEXT
+);
+
+
+insertLaunch:
+INSERT INTO Launch(flightNumber,missionName,details,launchDateUTC,patchUrlSmall,patchUrlLarge,articleText)
+VALUES(?,?,?,?,?,?,?);
+
+
+removeAllLaunches:
+DELETE FROM Launch;
+
+selectAllFromLaumches:
+SELECT Launch.* FROM Launch;
