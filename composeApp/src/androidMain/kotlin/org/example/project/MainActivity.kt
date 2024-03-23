@@ -1,14 +1,10 @@
 package org.example.project
 
-import App
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -42,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         launchesRecyclerView.adapter = launchesRvAdapter
         launchesRecyclerView.layoutManager = LinearLayoutManager(this)
 
-
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
             displayLaunches(true)
@@ -52,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayLaunches(needReload: Boolean) {
-        progressBarView.isActivated = true
+        progressBarView.isVisible = true
         mainScope.launch {
             kotlin.runCatching {
                 sdk.getLaunches(needReload)
@@ -62,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             }.onFailure {
                 Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_SHORT).show()
             }
-            progressBarView.isActivated = false
+            progressBarView.isVisible = false
         }
     }
 
